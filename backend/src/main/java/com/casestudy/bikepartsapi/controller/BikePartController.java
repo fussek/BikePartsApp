@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:3000") // To allow requests from React frontend
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api/v1/bikeparts")
 public class BikePartController {
@@ -35,14 +35,26 @@ public class BikePartController {
 
     @PutMapping("/{id}")
     public ResponseEntity<BikePart> updateBikePart(@PathVariable(value = "id") Long id,
-                                                   @Valid @RequestBody BikePart bikePartDetails) {
+                                                 @Valid @RequestBody BikePart bikePartDetails) {
         BikePart updatedBikePart = bikePartService.updateBikePart(id, bikePartDetails);
         return ResponseEntity.ok(updatedBikePart);
     }
+
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteBikePart(@PathVariable(value = "id") Long id) {
         bikePartService.deleteBikePart(id);
         return ResponseEntity.ok().build();
+    }
+    
+    /**
+     * New endpoint to provide the next available article number to the frontend.
+     * @return A ResponseEntity containing the next article number as a Long.
+     */
+    @GetMapping("/next-article-number")
+    public ResponseEntity<Long> getNextArticleNumber() {
+        Long nextArticleNumber = bikePartService.getNextArticleNumber();
+        return ResponseEntity.ok(nextArticleNumber);
     }
 }

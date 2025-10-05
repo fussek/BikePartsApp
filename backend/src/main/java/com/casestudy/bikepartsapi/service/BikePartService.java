@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BikePartService {
@@ -43,5 +44,14 @@ public class BikePartService {
     public void deleteBikePart(Long id) {
         BikePart bikePart = getBikePartById(id);
         bikePartRepository.delete(bikePart);
+    }
+
+    /**
+     * Calculates the next available article number.
+     * @return The highest existing article number + 1, or a default starting number if no articles exist.
+     */
+    public Long getNextArticleNumber() {
+        Optional<BikePart> lastPart = bikePartRepository.findTopByOrderByArticleNumberDesc();
+        return lastPart.map(part -> part.getArticleNumber() + 1L).orElse(180000L); //default article nr
     }
 }
