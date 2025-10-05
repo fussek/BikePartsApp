@@ -1,24 +1,21 @@
-# Use an official OpenJDK runtime as a parent image that matches your Java 8 version
-FROM openjdk:8-jdk-slim
+FROM maven:3.8.5-openjdk-8 AS build
 
-# Set the working directory inside the container
 WORKDIR /app
 
-# Copy the Maven wrapper and pom.xml
-COPY .mvn/ .mvn
-COPY mvnw pom.xml ./
+COPY pom.xml .
 
-# Download dependencies
-RUN ./mvnw dependency:go-offline
+RUN mvn dependency:go-offline
 
-# Copy the project source code
 COPY src ./src
 
-# Package the application into a JAR file
-RUN ./mvnw package -DskipTests
+RUN mvn package -DskipTests
 
-# Expose the port the app runs on
+FROM openjdk:8-jdk-slim
+
+WORKDIR /app
+
+COPY --from=build /app/target/bike-parts-api-0.0.1-SNAPSHOT.jar .
+
 EXPOSE 8080
 
-# Command to run the application
-ENTRYPOINT ["java","-jar","target/bike-parts-api-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-jar","bike-parts-api-0.0.1-SNAPSHOT.jar"]
