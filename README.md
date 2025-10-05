@@ -1,5 +1,27 @@
 # 🚴‍♂️ Bike Parts Management - Full Stack Case Study
 
+
+---
+
+## 🚨 Important Note on Backend Availability (Render Free Tier)
+
+> 💤 **Heads-up!**  
+The backend is hosted on **Render’s free tier**, which puts the server to **sleep after periods of inactivity**. This causes the **first request to take 20–30 seconds** to spin the service back up.
+
+### 🛠️ To test the app without issues, please follow these steps:
+
+1. Open the backend link **first** to wake up the server:  
+   👉 [https://bike-parts-api.onrender.com/](https://bike-parts-api.onrender.com/)
+
+2. Wait for the backend to finish loading (it may show a blank or JSON response — that’s okay).
+
+3. Once the backend is awake, open the frontend app:  
+   👉 [https://case-study-app.netlify.app/](https://case-study-app.netlify.app/)
+
+✅ You’ll now be able to use the full application with a responsive backend.
+
+---
+
 ---
 
 ## ⚠️⚠️⚠️ Important Note on Versions ⚠️⚠️⚠️
