@@ -3,15 +3,15 @@
 
 ---
 
-## 🚨 Important Note on Backend Availability (Render Free Tier)
+## 🚨 Important Note on Backend Availability (Railway Free Tier)
 
 > 💤 **Heads-up!**  
-The backend is hosted on **Render’s free tier**, which puts the server to **sleep after periods of inactivity**. This causes the **first request to take 20–30 seconds** to spin the service back up.
+The backend is hosted on **Railway's free tier**, which puts the server to **sleep after periods of inactivity**. This causes the **first request to take few seconds** to spin the service back up.
 
 ### 🛠️ To test the app without issues, please follow these steps:
 
 1. Open the backend link **first** to wake up the server:  
-   👉 [https://bike-parts-api.onrender.com/](https://bike-parts-api.onrender.com/)
+   👉 [https://bikepartsapibackend-production.up.railway.app/api/v1/bikeparts/](https://bikepartsapibackend-production.up.railway.app/api/v1/bikeparts/)
 
 2. Wait for the backend to finish loading (it may show a blank or JSON response — that’s okay).
 
@@ -50,8 +50,8 @@ A full-stack application for managing bicycle parts, built as part of a develope
 - 🌐 **Frontend (Netlify):**  
   https://case-study-app.netlify.app/
 
-- 🔧 **Backend (Render):**  
-  https://bike-parts-api.onrender.com/api/v1/bikeparts
+- 🔧 **Backend (Railway):**  
+  https://bikepartsapibackend-production.up.railway.app/api/v1/bikeparts
 
 ---
 
@@ -146,4 +146,4 @@ npm test
 Deployed from a **single repository**:
 
 - **Frontend:** Deployed on **Netlify**
-- **Backend:** Deployed on **Render**
+- **Backend:** Deployed on **Railway**
